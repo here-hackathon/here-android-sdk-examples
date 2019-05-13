@@ -14,18 +14,18 @@
  * limitations under the License.
  */
 
-package com.here.android.example.venuesandlogging;
+package com.here.android.example.venuesandlogging
 
-import java.util.Locale;
+import java.util.Locale
 
 /**
  * Created by ankonova on 3/1/2018.
  */
 
-public class Log {
+object Log {
 
     // Flag for enabling logs
-    public static boolean mEnabled;
+    var mEnabled: Boolean = false
 
     /**
      * Logs a VERBOSE message.
@@ -33,9 +33,9 @@ public class Log {
      * @param message Log message.
      * @param arguments Optional arguments.
      */
-    public static void v(String tag, String message, Object... arguments) {
+    fun v(tag: String, message: String, vararg arguments: Any) {
         if (mEnabled) {
-            println(android.util.Log.VERBOSE, tag, message, arguments);
+            println(android.util.Log.VERBOSE, tag, message, *arguments)
         }
     }
 
@@ -45,9 +45,9 @@ public class Log {
      * @param message Log message.
      * @param arguments Optional arguments.
      */
-    public static void d(String tag, String message, Object... arguments) {
+    fun d(tag: String, message: String, vararg arguments: Any) {
         if (mEnabled) {
-            println(android.util.Log.DEBUG, tag, message, arguments);
+            println(android.util.Log.DEBUG, tag, message, *arguments)
         }
     }
 
@@ -57,9 +57,9 @@ public class Log {
      * @param message Log message.
      * @param arguments Optional arguments.
      */
-    public static void i(String tag, String message, Object... arguments) {
+    fun i(tag: String, message: String, vararg arguments: Any) {
         if (mEnabled) {
-            println(android.util.Log.INFO, tag, message, arguments);
+            println(android.util.Log.INFO, tag, message, *arguments)
         }
     }
 
@@ -69,9 +69,9 @@ public class Log {
      * @param message Log message.
      * @param arguments Optional arguments.
      */
-    public static void w(String tag, String message, Object... arguments) {
+    fun w(tag: String, message: String, vararg arguments: Any) {
         if (mEnabled) {
-            println(android.util.Log.WARN, tag, message, arguments);
+            println(android.util.Log.WARN, tag, message, *arguments)
         }
     }
 
@@ -81,9 +81,9 @@ public class Log {
      * @param message Log message.
      * @param arguments Optional arguments.
      */
-    public static void e(String tag, String message, Object... arguments) {
+    fun e(tag: String, message: String, vararg arguments: Any) {
         if (mEnabled) {
-            println(android.util.Log.ERROR, tag, message, arguments);
+            println(android.util.Log.ERROR, tag, message, *arguments)
         }
     }
 
@@ -94,18 +94,19 @@ public class Log {
      * @param format Log message.
      * @param arguments Optional arguments.
      */
-    public static void println(
-            int priority,
-            final String tag,
-            final String format,
-            final Object... arguments) {
+    fun println(
+            priority: Int,
+            tag: String,
+            format: String,
+            vararg arguments: Any) {
         if (mEnabled) {
             android.util.Log.println(
                     priority,
                     tag,
-                    arguments.length > 0 ?
-                            String.format(Locale.US, format, arguments) :
-                            format);
+                    if (arguments.size > 0)
+                        String.format(Locale.US, format, *arguments)
+                    else
+                        format)
         }
     }
 
@@ -114,11 +115,11 @@ public class Log {
      * @param throwable Throwable to form info for.
      * @return Throwable string info.
      */
-    public static String getStackTraceString(Throwable throwable) {
-        if (mEnabled) {
-            return android.util.Log.getStackTraceString(throwable);
+    fun getStackTraceString(throwable: Throwable): String? {
+        return if (mEnabled) {
+            android.util.Log.getStackTraceString(throwable)
         } else {
-            return null;
+            null
         }
     }
 
