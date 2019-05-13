@@ -135,7 +135,7 @@ class BasicVenueActivity : AppCompatActivity(), VenueListener, OnGestureListener
     private var mTransforming: Boolean = false
 
     // Flag for usage of Private Venues context
-    private var mPrivateVenues: Boolean = false
+    private var mPrivateVenues: Boolean = true
 
     // Flag for user control over the map
     private var mUserControl: Boolean = false
