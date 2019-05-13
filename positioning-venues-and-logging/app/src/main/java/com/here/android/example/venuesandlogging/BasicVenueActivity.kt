@@ -369,7 +369,7 @@ class BasicVenueActivity : AppCompatActivity(), VenueListener, OnGestureListener
             showOrHideRoutingButton()
         }
 
-        override fun onVenueVisibleInViewport(venue: Venue, visible: Boolean) {}
+        override fun onVenueVisibleInViewport(venue: Venue?, visible: Boolean) {}
     }
 
     /**
@@ -756,7 +756,7 @@ class BasicVenueActivity : AppCompatActivity(), VenueListener, OnGestureListener
 
     override fun onFloorChanged(venue: Venue, oldLevel: Level, newLevel: Level) {}
 
-    override fun onVenueVisibleInViewport(venue: Venue, visible: Boolean) {}
+    override fun onVenueVisibleInViewport(venue: Venue?, visible: Boolean) {}
 
     override fun onVenueSelected(venue: Venue) {
         Log.v(TAG, "onVenueSelected: %s", venue.id)
