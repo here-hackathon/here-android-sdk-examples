@@ -30,13 +30,13 @@
          at https://developer.here.com/develop/mobile-sdks-->
         <meta-data
             android:name="com.here.android.maps.appid"
-            android:value="{YOUR_APP_ID}" />
+            android:value="1ClvwhEbRmvisInb7tvB" />
         <meta-data
             android:name="com.here.android.maps.apptoken"
-            android:value="{YOUR_APP_CODE}" />
+            android:value="diGaz2DjkPda7wcUTrEGSQ" />
         <meta-data
             android:name="com.here.android.maps.license.key"
-            android:value="{YOUR_LICENSE_KEY}" />
+            android:value="UbmPRtUNhsuuPMrwWUDENgEBrvaKQQebHfpyx2EtxrneOFgMhn685Ec6X38E6hzhZvei4rojwy2qmqJ2Y8oKmPDmhhgB1WokzU4oalgEzZwvfNLz/cAH5Nxq1frlBI2KrmuP2V1HQlMRvmrguuu/5FyJcTyDc+qbjr6rlCiajWVXnFfV+1bJ2A4MezEI8Fm6Fw6b0f4l5Y8Kq+o7O5mfYcEuO7UXPAxnKjGQ6c1teezVOOMkStpxCJBaI5NNwA06KHxwgsB0nL3fWSp1Z5cyiibncuF8bst6X9Y5wl2nF+EkOC2UMfojV9QqUOKSBTSKfXw+SOcBx1MwM7+gyLwEHtp9fbASObvXC98Fdq9eOFslnr+8tEhxVSLK94Ej5PS0q6gSaSCufcKP9IcHXdkxqbjHRQnuleM+z6wV25hC0k0/+lamvlYUJ1DlAKpD2nl6tDYyCXL4uHqaulIb1xuhohWXzdnMCEdy8kf3ghHNi8C8PxEMlKVssThsCxJVU4bhXnxppYV7erRXJJRM+qOlo302fm/XzszLMvIezdcxE4YaLrMKmdFkeodY5EqNmZAwAQjBrX2ajCw1+16HiXrMZ45emjL4pCRN7ng+3gIr9RynKuHXKmMN9iMBJiGnx/g2w9apk7q+RzvY1oecek3UV9WrU23qmn9w//ZchEux8Ts=" />
 
 
         <activity android:label="@string/app_name" android:name=".BasicVenueActivity">
