@@ -81,18 +81,17 @@ android:orientation="vertical" >
             android:text="space name" />
 
         <TextView
-            android:id="@+id/address"
+            android:id="@+id/secondarySubtitle"
             android:layout_below="@+id/spaceName"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:maxLines="1" />
+            android:layout_width="match_parent"/>
 
-        <TextView
-            android:id="@+id/secondarySubtitle"
-            android:layout_below="@+id/address"
-            android:layout_height="wrap_content"
+        <Button
+            android:id="@+id/lightButton"
+            android:text="Light switch"
+            android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
-            android:maxLines="1" />
+            android:layout_height="wrap_content" />
 
     </RelativeLayout>
 

@@ -17,6 +17,9 @@
 package com.here.android.example.venuesandlogging
 
 import android.Manifest
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProvider
+import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
@@ -67,19 +70,18 @@ import com.here.android.mpa.venues3d.VenueMapFragment
 import com.here.android.mpa.venues3d.VenueMapFragment.VenueListener
 import com.here.android.mpa.venues3d.VenueRouteOptions
 import com.here.android.mpa.venues3d.VenueService
-import com.here.android.mpa.venues3d.VenueService.VenueServiceListener
-import com.here.android.positioning.DiagnosticsListener
 import com.here.android.positioning.StatusListener
 import com.here.android.positioning.helpers.RadioMapLoadHelper
 import com.here.android.positioning.radiomap.RadioMapLoader
-import kotlinx.android.synthetic.main.activity_main.address
+import com.here.android.ui.ZumtobelViewModel
 import kotlinx.android.synthetic.main.activity_main.header
+import kotlinx.android.synthetic.main.activity_main.lightButton
 import kotlinx.android.synthetic.main.activity_main.myLocationButton
+import kotlinx.android.synthetic.main.activity_main.secondarySubtitle
 import kotlinx.android.synthetic.main.activity_main.spaceName
 
 import java.io.File
 import java.lang.ref.WeakReference
-import java.util.Locale
 
 class BasicVenueActivity : AppCompatActivity(), VenueListener, OnGestureListener, OnPositionChangedListener, OnTransformListener, RoutingController.RoutingControllerListener {
 
@@ -364,6 +366,28 @@ class BasicVenueActivity : AppCompatActivity(), VenueListener, OnGestureListener
             showOrHideRoutingButton()
             header.visibility = View.VISIBLE
             spaceName.text = space.content.name
+
+            var roomInfo = ""
+
+            zumtobelViewModel.devicesLiveData.observe(this@BasicVenueActivity, Observer { devices ->
+                Log.d("BCX2019", "Total number of devices: ${devices?.size}")
+
+                devices?.forEach {device ->
+                    if (device.type.equals("SENSOR")) {
+                        var value = ""
+                        when (device.name) {
+                            "VOC" -> value = device.vocCapability?.voc.toString()
+                            "CO2" -> value = device.co2Capability?.co2.toString()
+                            "light sensor" -> value = device.brightnessCapability?.brightness.toString()
+                            "presence left", "presence right" -> value = device.presenceCapability?.presence.toString()
+                            "humidity" -> value = device.humidityCapability?.humidity.toString()
+                            "temp" -> value = device.temperatureCapability?.temperature.toString()
+                        }
+                        if (value.isNotEmpty()) roomInfo += "${device.name}: ${value}\n"
+                    }
+                }
+                secondarySubtitle.text = roomInfo
+            })
         }
 
         override fun onSpaceDeselected(venue: Venue, space: Space) {
@@ -401,6 +425,7 @@ class BasicVenueActivity : AppCompatActivity(), VenueListener, OnGestureListener
         }
     }
 
+    private lateinit var zumtobelViewModel: ZumtobelViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -419,6 +444,16 @@ class BasicVenueActivity : AppCompatActivity(), VenueListener, OnGestureListener
 
         myLocationButton.setOnClickListener {
             followPosition()
+        }
+
+        zumtobelViewModel = ViewModelProviders.of(this).get(ZumtobelViewModel::class.java)
+
+        zumtobelViewModel.fetchDevices()
+
+        var intensity = 100.0
+        lightButton.setOnClickListener {
+            zumtobelViewModel.changeLightIntensity("5acc063b-e3df-43f0-903b-7b9450e9c4c2", intensity)
+            intensity = 100 - intensity
         }
     }
 
