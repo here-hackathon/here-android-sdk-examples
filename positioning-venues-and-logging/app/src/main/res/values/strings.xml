@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Venues</string>
+    <string name="app_name">Smart Building</string>
 
     <string name="action_add_private_venues">Enable private venues</string>
     <string name="action_remove_private_venues">Disable private venues</string>
