@@ -3,6 +3,8 @@ package com.here.android.ui
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import com.here.android.api.ApiFactory
+import com.here.android.api.BoschApiFactory
+import com.here.android.api.BoschRepository
 import com.here.android.api.Device
 import com.here.android.api.ZumtobelRepository
 import kotlinx.coroutines.CoroutineScope
@@ -12,7 +14,7 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
-class ZumtobelViewModel: ViewModel() {
+class SmartBuildingViewModel: ViewModel() {
     private val parentJob = Job()
 
     private val coroutineContext: CoroutineContext
@@ -34,6 +36,14 @@ class ZumtobelViewModel: ViewModel() {
     fun changeLightIntensity(id: String, intensity: Double){
         scope.launch {
             repository.changeLightIntensity(id, intensity)
+        }
+    }
+
+    private val boschRepository = BoschRepository(BoschApiFactory.boschApi)
+
+    fun setTemperatureHeating(value: Int){
+        scope.launch {
+            boschRepository.setTemperatureHeating(value)
         }
     }
 

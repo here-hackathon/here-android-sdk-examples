@@ -86,12 +86,29 @@ android:orientation="vertical" >
             android:layout_height="wrap_content"
             android:layout_width="match_parent"/>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/temperatureButton"
+                android:text="Set to 22°C"
+                android:layout_alignParentBottom="true"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
         <Button
             android:id="@+id/lightButton"
             android:text="Light switch"
             android:layout_alignParentBottom="true"
-            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_width="0dp"
             android:layout_height="wrap_content" />
+        </LinearLayout>
 
     </RelativeLayout>
 

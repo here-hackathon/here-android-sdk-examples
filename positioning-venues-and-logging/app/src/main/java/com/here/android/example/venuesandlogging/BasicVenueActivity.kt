@@ -18,10 +18,8 @@ package com.here.android.example.venuesandlogging
 
 import android.Manifest
 import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
-import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.graphics.PointF
 import android.os.Build
@@ -31,7 +29,6 @@ import android.support.v4.app.ActivityCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
@@ -65,7 +62,6 @@ import com.here.android.mpa.venues3d.Space
 import com.here.android.mpa.venues3d.SpaceLocation
 import com.here.android.mpa.venues3d.Venue
 import com.here.android.mpa.venues3d.VenueController
-import com.here.android.mpa.venues3d.VenueInfo
 import com.here.android.mpa.venues3d.VenueMapFragment
 import com.here.android.mpa.venues3d.VenueMapFragment.VenueListener
 import com.here.android.mpa.venues3d.VenueRouteOptions
@@ -73,12 +69,13 @@ import com.here.android.mpa.venues3d.VenueService
 import com.here.android.positioning.StatusListener
 import com.here.android.positioning.helpers.RadioMapLoadHelper
 import com.here.android.positioning.radiomap.RadioMapLoader
-import com.here.android.ui.ZumtobelViewModel
+import com.here.android.ui.SmartBuildingViewModel
 import kotlinx.android.synthetic.main.activity_main.header
 import kotlinx.android.synthetic.main.activity_main.lightButton
 import kotlinx.android.synthetic.main.activity_main.myLocationButton
 import kotlinx.android.synthetic.main.activity_main.secondarySubtitle
 import kotlinx.android.synthetic.main.activity_main.spaceName
+import kotlinx.android.synthetic.main.activity_main.temperatureButton
 
 import java.io.File
 import java.lang.ref.WeakReference
@@ -366,8 +363,9 @@ class BasicVenueActivity : AppCompatActivity(), VenueListener, OnGestureListener
             showOrHideRoutingButton()
             header.visibility = View.VISIBLE
             spaceName.text = space.content.name
+            var roomInfo = ""
 
-            zumtobelViewModel.devicesLiveData.observe(this@BasicVenueActivity, Observer { devices ->
+            smartBuildingViewModel.devicesLiveData.observe(this@BasicVenueActivity, Observer { devices ->
                 Log.d("BCX2019", "Total number of devices: ${devices?.size}")
 
                 var roomInfo = ""
@@ -389,7 +387,8 @@ class BasicVenueActivity : AppCompatActivity(), VenueListener, OnGestureListener
 
                 var intensity = 100.0
                 lightButton.setOnClickListener {
-                    zumtobelViewModel.changeLightIntensity(devices?.firstOrNull() { it.name == "indirect" }!!.id, intensity)
+                    smartBuildingViewModel.changeLightIntensity(devices?.firstOrNull() { it.name == "indirect" }!!
+                            .id, intensity)
                     intensity = 100 - intensity
                 }
             })
@@ -430,7 +429,7 @@ class BasicVenueActivity : AppCompatActivity(), VenueListener, OnGestureListener
         }
     }
 
-    private lateinit var zumtobelViewModel: ZumtobelViewModel
+    private lateinit var smartBuildingViewModel: SmartBuildingViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -451,9 +450,18 @@ class BasicVenueActivity : AppCompatActivity(), VenueListener, OnGestureListener
             followPosition()
         }
 
-        zumtobelViewModel = ViewModelProviders.of(this).get(ZumtobelViewModel::class.java)
+        smartBuildingViewModel = ViewModelProviders.of(this).get(SmartBuildingViewModel::class.java)
+        smartBuildingViewModel.fetchDevices()
 
-        zumtobelViewModel.fetchDevices()
+        var intensity = 100.0
+        lightButton.setOnClickListener {
+            smartBuildingViewModel.changeLightIntensity("5acc063b-e3df-43f0-903b-7b9450e9c4c2", intensity)
+            intensity = 100 - intensity
+        }
+
+        temperatureButton.setOnClickListener {
+            smartBuildingViewModel.setTemperatureHeating(22)
+        }
     }
 
     override fun onPause() {
