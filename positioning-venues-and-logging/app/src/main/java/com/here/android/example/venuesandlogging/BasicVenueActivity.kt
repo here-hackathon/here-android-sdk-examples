@@ -72,6 +72,9 @@ import com.here.android.positioning.DiagnosticsListener
 import com.here.android.positioning.StatusListener
 import com.here.android.positioning.helpers.RadioMapLoadHelper
 import com.here.android.positioning.radiomap.RadioMapLoader
+import kotlinx.android.synthetic.main.activity_main.address
+import kotlinx.android.synthetic.main.activity_main.header
+import kotlinx.android.synthetic.main.activity_main.spaceName
 
 import java.io.File
 import java.lang.ref.WeakReference
@@ -361,6 +364,8 @@ class BasicVenueActivity : AppCompatActivity(), VenueListener, OnGestureListener
             clearRoute()
             mSelectedSpace = space
             showOrHideRoutingButton()
+            header.visibility = View.VISIBLE
+            spaceName.text = space.content.name
         }
 
         override fun onSpaceDeselected(venue: Venue, space: Space) {
