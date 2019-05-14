@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2017-2018 HERE Global B.V. and its affiliate(s).
+  ~ All rights reserved.
+  ~
+  ~ This software and other materials contain proprietary information
+  ~ controlled by HERE and are protected by applicable copyright legislation.
+  ~ Any use and utilization of this software and other materials and
+  ~ disclosure to any third parties is conditional upon having a separate
+  ~ agreement with HERE for the access, use, utilization or disclosure of this
+  ~ software. In the absence of such agreement, the use of the software is not
+  ~ allowed.
+  -->
+
+<resources>
+    <dimen name="spacing_4">4dp</dimen>
+    <dimen name="spacing_8">8dp</dimen>
+    <dimen name="spacing_12">12dp</dimen>
+    <dimen name="spacing_16">16dp</dimen>
+    <dimen name="spacing_20">20dp</dimen>
+    <dimen name="spacing_24">24dp</dimen>
+    <dimen name="spacing_36">36dp</dimen>
+    <dimen name="spacing_48">48dp</dimen>
+    <dimen name="spacing_56">56dp</dimen>
+    <dimen name="spacing_72">72dp</dimen>
+
+    <dimen name="size_4">4dp</dimen>
+    <dimen name="size_8">8dp</dimen>
+    <dimen name="size_12">12dp</dimen>
+    <dimen name="size_40">40dp</dimen>
+    <dimen name="size_72">72dp</dimen>
+
+    <dimen name="list_icon_size">40dp</dimen>
+
+    <dimen name="button_group_height">57dp</dimen>
+    <dimen name="button_group_divider_width">1dp</dimen>
+    <dimen name="button_group_divider_height">24dp</dimen>
+    <dimen name="button_group_border_height">1dp</dimen>
+
+    <dimen name="default_sheet_peek_height">240dp</dimen>
+    <dimen name="progress_indicator_max_text_width">200dp</dimen>
+
+    <dimen name="meeting_details_sheet_peek_height">240dp</dimen>
+
+    <dimen name="indoor_level_picker_width">40dp</dimen>
+    <dimen name="indoor_level_picker_height">132dp</dimen>
+    <dimen name="indoor_level_picker_corners">2dp</dimen>
+    <dimen name="indoor_level_picker_bubble_offset">48dp</dimen>
+    <dimen name="indoor_level_picker_bubble_side_padding">2dp</dimen>
+    <dimen name="indoor_level_picker_bubble_outline">1dp</dimen>
+    <dimen name="indoor_level_picker_current_floor_top_margin">2dp</dimen>
+    <dimen name="indoor_level_picker_current_floor_bottom_margin">8dp</dimen>
+    <dimen name="indoor_level_picker_current_floor_indicator_offset">4dp</dimen>
+    <dimen name="indoor_level_picker_current_floor_underline_height">2dp</dimen>
+
+    <dimen name="navigation_bar_height">57dp</dimen>
+    <dimen name="navigation_bar_border_height">1dp</dimen>
+
+    <dimen name="search_bar_height">56dp</dimen>
+    <dimen name="search_bar_bg_height">72dp</dimen>
+
+    <dimen name="more_settings_header">144dp</dimen>
+
+    <dimen name="extra_height_sharing_image">200dp</dimen>
+
+    <dimen name="routing_bottom_sheet_peek_height_initial">300dp</dimen>
+    <dimen name="routing_bottom_sheet_peek_height">132dp</dimen>
+    <dimen name="zoom_to_route_margin">50dp</dimen>
+    <dimen name="routing_details_pager_height">144dp</dimen>
+    <dimen name="routing_details_toolbar_height">60dp</dimen>
+    <dimen name="select_starting_point_toolbar_height">60dp</dimen>
+    <dimen name="select_starting_point_bottom_height">144dp</dimen>
+
+</resources>

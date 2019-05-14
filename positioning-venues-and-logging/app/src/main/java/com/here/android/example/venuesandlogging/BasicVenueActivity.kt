@@ -74,6 +74,7 @@ import com.here.android.positioning.helpers.RadioMapLoadHelper
 import com.here.android.positioning.radiomap.RadioMapLoader
 import kotlinx.android.synthetic.main.activity_main.address
 import kotlinx.android.synthetic.main.activity_main.header
+import kotlinx.android.synthetic.main.activity_main.myLocationButton
 import kotlinx.android.synthetic.main.activity_main.spaceName
 
 import java.io.File
@@ -101,7 +102,7 @@ class BasicVenueActivity : AppCompatActivity(), VenueListener, OnGestureListener
     private var mPositioningManager: PositioningManager? = null
 
     // Flag for using indoor positioning
-    private var mIndoorPositioning: Boolean = false
+    private var mIndoorPositioning: Boolean = true
 
     // Flag for using indoor routing
     private var mIndoorRouting: Boolean = false
@@ -114,9 +115,6 @@ class BasicVenueActivity : AppCompatActivity(), VenueListener, OnGestureListener
 
     // Current activity
     private var mActivity: BasicVenueActivity? = null
-
-    // Text view for position updates
-    private var mLocationInfo: TextView? = null
 
     // Location method currently in use
     private var mLocationMethod: PositioningManager.LocationMethod? = null
@@ -141,7 +139,7 @@ class BasicVenueActivity : AppCompatActivity(), VenueListener, OnGestureListener
     private var mPrivateVenues: Boolean = true
 
     // Flag for user control over the map
-    private var mUserControl: Boolean = false
+    private var mUserControl: Boolean = true
 
     // callback that is called when transforming ends
     private var mPendingUpdate: Runnable? = null
@@ -418,6 +416,10 @@ class BasicVenueActivity : AppCompatActivity(), VenueListener, OnGestureListener
             ActivityCompat
                     .requestPermissions(this, RUNTIME_PERMISSIONS, REQUEST_CODE_ASK_PERMISSIONS)
         }
+
+        myLocationButton.setOnClickListener {
+            followPosition()
+        }
     }
 
     override fun onPause() {
@@ -454,11 +456,11 @@ class BasicVenueActivity : AppCompatActivity(), VenueListener, OnGestureListener
             add_private_venues!!.isVisible = false
             remove_private_venues!!.isVisible = true
         }
-        if (!mUserControl) {
-            follow_position!!.isChecked = true
-        } else {
-            follow_position!!.isChecked = false
-        }
+//        if (!mUserControl) {
+//            follow_position!!.isChecked = true
+//        } else {
+//            follow_position!!.isChecked = false
+//        }
         if (mIndoorPositioning) {
             add_indoor_to_position!!.isChecked = true
         } else {
@@ -945,11 +947,7 @@ class BasicVenueActivity : AppCompatActivity(), VenueListener, OnGestureListener
                                 "updates: %s", Log.getStackTraceString(ex)!!)
                     }
 
-                    if (mLastMapCenter == null) {
-                        mMap!!.setCenter(GeoCoordinate(61.497961, 23.763606, 0.0), Map.Animation.NONE)
-                    } else {
-                        mMap!!.setCenter(mLastMapCenter, Map.Animation.NONE)
-                    }
+                    followPosition()
                 }
             }
         })

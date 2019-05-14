@@ -1,0 +1,27 @@
+<!--
+  ~ Copyright (C) 2017-2018 HERE Global B.V. and its affiliate(s).
+  ~ All rights reserved.
+  ~
+  ~ This software and other materials contain proprietary information
+  ~ controlled by HERE and are protected by applicable copyright legislation.
+  ~ Any use and utilization of this software and other materials and
+  ~ disclosure to any third parties is conditional upon having a separate
+  ~ agreement with HERE for the access, use, utilization or disclosure of this
+  ~ software. In the absence of such agreement, the use of the software is not
+  ~ allowed.
+  -->
+
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:height="20dp"
+    android:width="20dp"
+    android:viewportHeight="20"
+    android:viewportWidth="20">
+    <group
+        android:name="rotationGroup"
+        android:pivotY="10"
+        android:pivotX="10">
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M15.64,4.35C14.19,2.9 12.2,2 9.99,2C5.57,2 2,5.58 2,10C2,14.42 5.57,18 9.99,18C13.72,18 16.83,15.45 17.72,12L15.64,12C14.82,14.33 12.6,16 9.99,16C6.68,16 3.99,13.31 3.99,10C3.99,6.69 6.68,4 9.99,4C11.65,4 13.13,4.69 14.21,5.78L11.697,8.293C11.306,8.684 11.428,9 11.993,9L16.987,9C17.541,9 17.99,8.562 17.99,7.997L17.99,3.003C17.99,2.449 17.673,2.317 17.285,2.705L15.64,4.35Z"/>
+    </group>
+</vector>

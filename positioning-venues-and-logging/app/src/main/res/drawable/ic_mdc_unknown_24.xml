@@ -1,0 +1,24 @@
+<!--
+  ~ Copyright (C) 2017-2018 HERE Global B.V. and its affiliate(s).
+  ~ All rights reserved.
+  ~
+  ~ This software and other materials contain proprietary information
+  ~ controlled by HERE and are protected by applicable copyright legislation.
+  ~ Any use and utilization of this software and other materials and
+  ~ disclosure to any third parties is conditional upon having a separate
+  ~ agreement with HERE for the access, use, utilization or disclosure of this
+  ~ software. In the absence of such agreement, the use of the software is not
+  ~ allowed.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24.0"
+    android:viewportHeight="24.0">
+    <path
+        android:pathData="M16.132,2.806C17.028,3.226 17.7,3.786 18.148,4.486C18.596,5.186 18.82,5.947 18.82,6.768C18.82,7.533 18.689,8.187 18.428,8.728C18.167,9.269 17.849,9.703 17.476,10.03C17.103,10.357 16.608,10.735 15.992,11.164C15.245,11.668 14.69,12.13 14.326,12.55C13.962,12.97 13.78,13.516 13.78,14.188L13.78,15.028L10.112,15.028L10.112,14.048C10.112,13.189 10.247,12.461 10.518,11.864C10.789,11.267 11.115,10.791 11.498,10.436C11.881,10.081 12.361,9.708 12.94,9.316C13.537,8.924 13.971,8.579 14.242,8.28C14.513,7.981 14.648,7.599 14.648,7.132C14.648,6.553 14.457,6.11 14.074,5.802C13.691,5.494 13.164,5.34 12.492,5.34C11.223,5.34 10.084,5.928 9.076,7.104L6.5,5.116C7.321,4.164 8.255,3.436 9.3,2.932C10.345,2.428 11.54,2.176 12.884,2.176C14.153,2.176 15.236,2.386 16.132,2.806ZM13.769,17.731C14.256,18.218 14.5,18.803 14.5,19.485C14.5,20.168 14.256,20.757 13.769,21.254C13.282,21.751 12.687,22 11.985,22C11.284,22 10.694,21.756 10.216,21.269C9.739,20.782 9.5,20.187 9.5,19.485C9.5,18.803 9.739,18.218 10.216,17.731C10.694,17.244 11.284,17 11.985,17C12.687,17 13.282,17.244 13.769,17.731Z"
+        android:fillColor="#000000"
+        tools:ignore="VectorPath"/>
+</vector>

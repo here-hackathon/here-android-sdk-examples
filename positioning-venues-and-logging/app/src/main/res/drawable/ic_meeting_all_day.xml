@@ -1,0 +1,25 @@
+<!--
+  ~ Copyright (C) 2017-2018 HERE Global B.V. and its affiliate(s).
+  ~ All rights reserved.
+  ~
+  ~ This software and other materials contain proprietary information
+  ~ controlled by HERE and are protected by applicable copyright legislation.
+  ~ Any use and utilization of this software and other materials and
+  ~ disclosure to any third parties is conditional upon having a separate
+  ~ agreement with HERE for the access, use, utilization or disclosure of this
+  ~ software. In the absence of such agreement, the use of the software is not
+  ~ allowed.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:width="24dp"
+        android:height="24dp"
+        android:viewportWidth="24.0"
+        android:viewportHeight="24.0">
+    <path
+        android:pathData="M4.222,4.222L5.595,5.595C3.955,7.234 2.941,9.499 2.941,12C2.941,17.003 6.997,21.059 12,21.059C17.003,21.059 21.059,17.003 21.059,12C21.059,6.997 17.003,2.941 12,2.941L12,1C18.075,1 23,5.925 23,12C23,18.075 18.075,23 12,23C5.925,23 1,18.075 1,12C1,8.963 2.231,6.213 4.222,4.222ZM11,6.025L13,6.025L13,12.739L10.259,15.576L8.743,14.055L11,11.789L11,6.025Z"
+        android:fillColor="#000000"/>
+    <path
+        android:pathData="M2.074,2L7.5,2C7.777,2 8,2.224 8,2.5L8,7.926C8,8.203 7.777,8.426 7.5,8.426C7.368,8.426 7.241,8.374 7.147,8.28L1.72,2.854C1.525,2.658 1.525,2.342 1.72,2.146C1.814,2.053 1.941,2 2.074,2Z"
+        android:fillColor="#000000"/>
+</vector>

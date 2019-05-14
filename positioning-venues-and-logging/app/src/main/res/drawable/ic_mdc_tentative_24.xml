@@ -1,0 +1,24 @@
+<!--
+  ~ Copyright (C) 2017-2018 HERE Global B.V. and its affiliate(s).
+  ~ All rights reserved.
+  ~
+  ~ This software and other materials contain proprietary information
+  ~ controlled by HERE and are protected by applicable copyright legislation.
+  ~ Any use and utilization of this software and other materials and
+  ~ disclosure to any third parties is conditional upon having a separate
+  ~ agreement with HERE for the access, use, utilization or disclosure of this
+  ~ software. In the absence of such agreement, the use of the software is not
+  ~ allowed.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:width="24dp"
+        android:height="24dp"
+        android:viewportWidth="24.0"
+        android:viewportHeight="24.0">
+    <path
+        android:pathData="M12,22C6.477,22 2,17.523 2,12C2,6.477 6.477,2 12,2C17.523,2 22,6.477 22,12C22,17.523 17.523,22 12,22ZM14.448,6.346C13.904,6.091 13.247,5.964 12.476,5.964C11.66,5.964 10.935,6.117 10.3,6.423C9.665,6.729 9.099,7.171 8.6,7.749L10.164,8.956C10.776,8.242 11.467,7.885 12.238,7.885C12.646,7.885 12.966,7.978 13.199,8.165C13.431,8.353 13.547,8.622 13.547,8.973C13.547,9.256 13.465,9.489 13.301,9.67C13.136,9.851 12.873,10.061 12.51,10.299C12.159,10.537 11.867,10.764 11.635,10.979C11.402,11.194 11.204,11.483 11.04,11.846C10.875,12.209 10.793,12.651 10.793,13.172L10.793,13.5L13.02,13.5L13.02,13.257C13.02,12.849 13.13,12.518 13.352,12.262C13.573,12.007 13.91,11.727 14.363,11.421C14.737,11.16 15.037,10.931 15.264,10.733C15.491,10.534 15.683,10.271 15.842,9.942C16.001,9.613 16.08,9.217 16.08,8.752C16.08,8.253 15.944,7.792 15.672,7.366C15.4,6.941 14.992,6.602 14.448,6.346ZM13.061,15.439C12.769,15.146 12.412,15 11.991,15C11.57,15 11.216,15.146 10.93,15.439C10.643,15.731 10.5,16.082 10.5,16.491C10.5,16.912 10.643,17.269 10.93,17.561C11.216,17.854 11.57,18 11.991,18C12.412,18 12.769,17.851 13.061,17.553C13.354,17.254 13.5,16.901 13.5,16.491C13.5,16.082 13.354,15.731 13.061,15.439Z"
+        android:fillColor="#000000"
+        tools:ignore="VectorPath" />
+</vector>
