@@ -775,7 +775,7 @@ class BasicVenueActivity : AppCompatActivity(), VenueListener, OnGestureListener
         val lat = touchLocation.latitude
         val lon = touchLocation.longitude
         val StrGeo = String.format("%.6f, %.6f", lat, lon)
-        Toast.makeText(applicationContext, StrGeo, Toast.LENGTH_SHORT).show()
+        //Toast.makeText(applicationContext, StrGeo, Toast.LENGTH_SHORT).show()
         mUserControl = true
         invalidateOptionsMenu()
         return false
@@ -805,8 +805,7 @@ class BasicVenueActivity : AppCompatActivity(), VenueListener, OnGestureListener
         }
         val venueId = venue.id
         val venueName = venue.content.name
-        Toast.makeText(applicationContext, "$venueId: $venueName", Toast.LENGTH_SHORT)
-                .show()
+        //Toast.makeText(applicationContext, "$venueId: $venueName", Toast.LENGTH_SHORT).show()
         Log.v(TAG, "Venue selected: %s: %s", venueId, venueName)
     }
 
@@ -825,8 +824,8 @@ class BasicVenueActivity : AppCompatActivity(), VenueListener, OnGestureListener
         val spaceName = space.content.name
         val parentCategory = space.content.parentCategoryId
         val placeCategory = space.content.placeCategoryId
-        Toast.makeText(applicationContext, "Space " + spaceName + ", parent category: "
-                + parentCategory + ", place category: " + placeCategory, Toast.LENGTH_SHORT).show()
+        //Toast.makeText(applicationContext, "Space " + spaceName + ", parent category: "
+          //      + parentCategory + ", place category: " + placeCategory, Toast.LENGTH_SHORT).show()
         Log.v(TAG, "Space selected: %s, Parent category: %s, Place category: %s", spaceName, parentCategory, placeCategory)
     }
 
