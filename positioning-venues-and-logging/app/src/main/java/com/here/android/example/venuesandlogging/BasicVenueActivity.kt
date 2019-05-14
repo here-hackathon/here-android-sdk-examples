@@ -604,8 +604,6 @@ class BasicVenueActivity : AppCompatActivity(), VenueListener, OnGestureListener
                     }
                 }
             }
-            // Write updated position to the log and to info view
-            updateLocationInfo(locationMethod, geoPosition)
         }
     }
 
@@ -796,51 +794,6 @@ class BasicVenueActivity : AppCompatActivity(), VenueListener, OnGestureListener
     }
 
     /**
-     * Update location information to the log and location view.
-     * @param geoPosition Latest geo position update.
-     */
-    private fun updateLocationInfo(locationMethod: PositioningManager.LocationMethod, geoPosition: GeoPosition) {
-        if (mLocationInfo == null) {
-            return
-        }
-        val sb = StringBuffer()
-        val coord = geoPosition.coordinate
-        if (geoPosition.positionSource != GeoPosition.UNKNOWN) {
-            sb.append("Position Source: ").append(String.format(Locale.US, "%s\n", positionSourceToString(geoPosition)))
-        }
-        if (geoPosition.positionTechnology != GeoPosition.UNKNOWN) {
-            sb.append("Position Technology: ").append(String.format(Locale.US, "%s\n", positionTechnologyToString(geoPosition)))
-        }
-        sb.append("Coordinate:").append(String.format(Locale.US, "%.6f, %.6f\n", coord.latitude, coord.longitude))
-        if (geoPosition.latitudeAccuracy != GeoPosition.UNKNOWN.toFloat()) {
-            sb.append("Uncertainty:").append(String.format(Locale.US, "%.2fm\n", geoPosition.latitudeAccuracy))
-        }
-        if (coord.altitude != GeoCoordinate.UNKNOWN_ALTITUDE.toDouble()) {
-            sb.append("Altitude:").append(String.format(Locale.US, "%.2fm\n", coord.altitude))
-        }
-        if (geoPosition.heading != GeoPosition.UNKNOWN.toDouble()) {
-            sb.append("Heading:").append(String.format(Locale.US, "%.2f\n", geoPosition.heading))
-        }
-        if (geoPosition.speed != GeoPosition.UNKNOWN.toDouble()) {
-            sb.append("Speed:").append(String.format(Locale.US, "%.2fm/s\n", geoPosition.speed))
-        }
-        if (geoPosition.buildingName != null) {
-            sb.append("Building: ").append(geoPosition.buildingName)
-            if (geoPosition.buildingId != null) {
-                sb.append(" (").append(geoPosition.buildingId).append(")\n")
-            } else {
-                sb.append("\n")
-            }
-        }
-        if (geoPosition.floorId != null) {
-            sb.append("Floor ID: ").append(geoPosition.floorId).append("\n")
-        }
-        sb.deleteCharAt(sb.length - 1)
-        mLocationInfo!!.text = sb.toString()
-        Log.v(TAG, "Position Updated:\n%s", sb.toString())
-    }
-
-    /**
      * Converting position source to string
      * @param geoPosition latest position
      * @return string representation of position source
@@ -909,7 +862,6 @@ class BasicVenueActivity : AppCompatActivity(), VenueListener, OnGestureListener
         mActivity = this
 
         mVenueMapFragment = mapFragment
-        mLocationInfo = findViewById<View>(R.id.textViewLocationInfo) as TextView
 
         // Set path of isolated disk cache
         val diskCacheRoot = (Environment.getExternalStorageDirectory().path
