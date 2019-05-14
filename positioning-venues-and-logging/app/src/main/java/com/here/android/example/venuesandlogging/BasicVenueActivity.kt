@@ -367,11 +367,10 @@ class BasicVenueActivity : AppCompatActivity(), VenueListener, OnGestureListener
             header.visibility = View.VISIBLE
             spaceName.text = space.content.name
 
-            var roomInfo = ""
-
             zumtobelViewModel.devicesLiveData.observe(this@BasicVenueActivity, Observer { devices ->
                 Log.d("BCX2019", "Total number of devices: ${devices?.size}")
 
+                var roomInfo = ""
                 devices?.forEach {device ->
                     if (device.type.equals("SENSOR")) {
                         var value = ""
@@ -387,6 +386,12 @@ class BasicVenueActivity : AppCompatActivity(), VenueListener, OnGestureListener
                     }
                 }
                 secondarySubtitle.text = roomInfo
+
+                var intensity = 100.0
+                lightButton.setOnClickListener {
+                    zumtobelViewModel.changeLightIntensity(devices?.firstOrNull() { it.name == "indirect" }!!.id, intensity)
+                    intensity = 100 - intensity
+                }
             })
         }
 
@@ -449,12 +454,6 @@ class BasicVenueActivity : AppCompatActivity(), VenueListener, OnGestureListener
         zumtobelViewModel = ViewModelProviders.of(this).get(ZumtobelViewModel::class.java)
 
         zumtobelViewModel.fetchDevices()
-
-        var intensity = 100.0
-        lightButton.setOnClickListener {
-            zumtobelViewModel.changeLightIntensity("5acc063b-e3df-43f0-903b-7b9450e9c4c2", intensity)
-            intensity = 100 - intensity
-        }
     }
 
     override fun onPause() {
