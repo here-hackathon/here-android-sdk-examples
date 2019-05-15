@@ -10,14 +10,14 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiFactory{
 
-    private val tmdbClient = OkHttpClient().newBuilder()
+    private val okHttpClient = OkHttpClient().newBuilder()
             .addInterceptor(loggingInterceptor())
             .build()
 
 
 
     fun retrofit() : Retrofit = Retrofit.Builder()
-            .client(tmdbClient)
+            .client(okHttpClient)
             .baseUrl("http://100.100.200.51:2222/rest/api/v1/")
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
             .addCallAdapterFactory(CoroutineCallAdapterFactory())

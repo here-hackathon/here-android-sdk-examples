@@ -49,32 +49,32 @@ android:orientation="vertical" >
 
     </LinearLayout>
 
-<Button
-    android:id="@+id/buttonShowRoute"
-    style="?android:attr/buttonStyleSmall"
-    android:layout_width="wrap_content"
-    android:layout_height="40dp"
-    android:layout_marginBottom="6dp"
-    android:layout_marginRight="6dp"
-    android:layout_alignParentBottom="true"
-    android:layout_alignParentRight="true"
-    android:onClick="onCalculateRouteClick"
-    android:text="Show route"
-    android:visibility="gone"/>
+    <Button
+        android:id="@+id/buttonShowRoute"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginBottom="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:onClick="onCalculateRouteClick"
+        android:text="Show route"
+        android:visibility="gone"/>
 
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="300dp"
         android:background="@color/cardview_light_background"
         android:layout_alignParentBottom="true"
-        android:visibility="gone"
-        >
+        android:padding="8dp"
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/spaceName"
+            android:textStyle="bold"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="20dp"
             android:layout_marginBottom="4dp"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
@@ -90,24 +90,31 @@ android:orientation="vertical" >
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:orientation="horizontal"
-            android:weightSum="2">
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/temperatureButton"
-                android:text="Set to 22°C"
-                android:layout_alignParentBottom="true"
-                android:layout_weight="1"
-                android:layout_width="0dp"
+            <TextView
+                android:id="@+id/temperatureText"
+                android:text="Temperature:"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+            <android.support.v7.widget.AppCompatSeekBar
+                android:id="@+id/temperatureSeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/lightText"
+                android:text="Brightness:"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-        <Button
-            android:id="@+id/lightButton"
-            android:text="Light switch"
-            android:layout_alignParentBottom="true"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content" />
+            <android.support.v7.widget.AppCompatSeekBar
+                android:id="@+id/lightSeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
     </RelativeLayout>

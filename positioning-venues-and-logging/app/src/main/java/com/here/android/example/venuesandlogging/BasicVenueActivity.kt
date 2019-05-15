@@ -36,6 +36,7 @@ import android.widget.AdapterView
 import android.widget.BaseAdapter
 import android.widget.Button
 import android.widget.ListView
+import android.widget.SeekBar
 import android.widget.TextView
 import android.widget.Toast
 
@@ -71,11 +72,13 @@ import com.here.android.positioning.helpers.RadioMapLoadHelper
 import com.here.android.positioning.radiomap.RadioMapLoader
 import com.here.android.ui.SmartBuildingViewModel
 import kotlinx.android.synthetic.main.activity_main.header
-import kotlinx.android.synthetic.main.activity_main.lightButton
+import kotlinx.android.synthetic.main.activity_main.lightSeekBar
+import kotlinx.android.synthetic.main.activity_main.lightText
 import kotlinx.android.synthetic.main.activity_main.myLocationButton
 import kotlinx.android.synthetic.main.activity_main.secondarySubtitle
 import kotlinx.android.synthetic.main.activity_main.spaceName
-import kotlinx.android.synthetic.main.activity_main.temperatureButton
+import kotlinx.android.synthetic.main.activity_main.temperatureSeekBar
+import kotlinx.android.synthetic.main.activity_main.temperatureText
 
 import java.io.File
 import java.lang.ref.WeakReference
@@ -363,7 +366,6 @@ class BasicVenueActivity : AppCompatActivity(), VenueListener, OnGestureListener
             showOrHideRoutingButton()
             header.visibility = View.VISIBLE
             spaceName.text = space.content.name
-            var roomInfo = ""
 
             smartBuildingViewModel.devicesLiveData.observe(this@BasicVenueActivity, Observer { devices ->
                 Log.d("BCX2019", "Total number of devices: ${devices?.size}")
@@ -378,19 +380,52 @@ class BasicVenueActivity : AppCompatActivity(), VenueListener, OnGestureListener
                             "light sensor" -> value = device.brightnessCapability?.brightness.toString()
                             "presence left", "presence right" -> value = device.presenceCapability?.presence.toString()
                             "humidity" -> value = device.humidityCapability?.humidity.toString()
-                            "temp" -> value = device.temperatureCapability?.temperature.toString()
+                            "temp" -> {
+                                value = device.temperatureCapability?.temperature.toString()
+                                temperatureText.text = "Temperature: $value°C"
+                                temperatureSeekBar.progress = ((value.toDouble() - 16) * 12.5).toInt()
+                            }
                         }
                         if (value.isNotEmpty()) roomInfo += "${device.name}: ${value}\n"
                     }
                 }
                 secondarySubtitle.text = roomInfo
 
-                var intensity = 100.0
-                lightButton.setOnClickListener {
-                    smartBuildingViewModel.changeLightIntensity(devices?.firstOrNull() { it.name == "indirect" }!!
-                            .id, intensity)
-                    intensity = 100 - intensity
-                }
+                val indirectLightDevice = devices?.firstOrNull() { it.name == "indirect" }
+                val intensity = indirectLightDevice?.lightingCapability?.intensity
+                lightText.text = "Brightness: $intensity"
+                lightSeekBar.progress = intensity!!.toInt()
+                val indirectLightDeviceId = indirectLightDevice.id
+
+                lightSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+                    override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                        //smartBuildingViewModel.changeLightIntensity(indirectLightDeviceId, progress.toDouble())
+                        lightText.text = "Brightness: ${progress}"
+                    }
+
+                    override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                    }
+
+                    override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                        smartBuildingViewModel.changeLightIntensity(indirectLightDeviceId, seekBar?.progress!!.toDouble())
+                    }
+                })
+
+                temperatureSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+                    override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                        //smartBuildingViewModel.changeLightIntensity(indirectLightDeviceId, progress.toDouble())
+                    }
+
+                    override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                    }
+
+                    override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                        val value = 16 + seekBar?.progress!! / 12.5
+                        smartBuildingViewModel.setTemperatureHeating(value.toInt())
+                        temperatureText.text = "Temperature: $value°C"
+                    }
+                })
+
             })
         }
 
@@ -452,16 +487,6 @@ class BasicVenueActivity : AppCompatActivity(), VenueListener, OnGestureListener
 
         smartBuildingViewModel = ViewModelProviders.of(this).get(SmartBuildingViewModel::class.java)
         smartBuildingViewModel.fetchDevices()
-
-        var intensity = 100.0
-        lightButton.setOnClickListener {
-            smartBuildingViewModel.changeLightIntensity("5acc063b-e3df-43f0-903b-7b9450e9c4c2", intensity)
-            intensity = 100 - intensity
-        }
-
-        temperatureButton.setOnClickListener {
-            smartBuildingViewModel.setTemperatureHeating(22)
-        }
     }
 
     override fun onPause() {
